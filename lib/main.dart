@@ -31,6 +31,31 @@ class _QuizPageState extends State<QuizPage> {
     'Approximately one quarter of human bones are in the feet.',
     'A slug\'s blood is green.',
   ];
+  List<String> answers = [
+    'false',
+    'true',
+    'true',
+  ];
+  int questionNo = 0;
+  String userAnswer = '';
+
+  String checkAnswer(String answer, int question) {
+    if (answers[question] == answer) {
+      scoreKeeper.add(
+        Icon(
+          Icons.check_circle,
+          color: Colors.green,
+        ),
+      );
+    } else {
+      scoreKeeper.add(
+        Icon(
+          Icons.cancel,
+          color: Colors.red,
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +69,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                questions[0],
+                questions[questionNo],
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -70,12 +95,9 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 //The user picked true.
                 setState(() {
-                  scoreKeeper.add(
-                    Icon(
-                      Icons.check_circle,
-                      color: Colors.green,
-                    ),
-                  );
+                  userAnswer = 'true';
+                  checkAnswer(userAnswer, questionNo);
+                  questionNo++;
                 });
               },
             ),
@@ -97,12 +119,9 @@ class _QuizPageState extends State<QuizPage> {
                 //The user picked false.
                 setState(
                   () {
-                    scoreKeeper.add(
-                      Icon(
-                        Icons.cancel,
-                        color: Colors.red,
-                      ),
-                    );
+                    userAnswer = 'false';
+                    checkAnswer(userAnswer, questionNo);
+                    questionNo++;
                   },
                 );
               },
