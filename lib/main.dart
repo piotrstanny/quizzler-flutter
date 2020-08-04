@@ -25,16 +25,7 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  List<Icon> scoreKeeper = [
-    Icon(
-      Icons.check_circle,
-      color: Colors.green,
-    ),
-    Icon(
-      Icons.cancel,
-      color: Colors.red,
-    ),
-  ];
+  List<Icon> scoreKeeper = [];
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +64,14 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked true.
+                setState(() {
+                  scoreKeeper.add(
+                    Icon(
+                      Icons.check_circle,
+                      color: Colors.green,
+                    ),
+                  );
+                });
               },
             ),
           ),
@@ -91,12 +90,22 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked false.
+                setState(
+                  () {
+                    scoreKeeper.add(
+                      Icon(
+                        Icons.cancel,
+                        color: Colors.red,
+                      ),
+                    );
+                  },
+                );
               },
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(top: 70.0),
+        Expanded(
+          flex: 1,
           child: Row(
             children: scoreKeeper,
           ),
