@@ -7,7 +7,7 @@ class Quizzler extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.grey.shade800,
+        backgroundColor: Colors.grey.shade900,
         body: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.0),
@@ -25,6 +25,17 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
+  List<Icon> scoreKeeper = [
+    Icon(
+      Icons.check_circle,
+      color: Colors.green,
+    ),
+    Icon(
+      Icons.cancel,
+      color: Colors.red,
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -87,16 +98,7 @@ class _QuizPageState extends State<QuizPage> {
         Padding(
           padding: const EdgeInsets.only(top: 70.0),
           child: Row(
-            children: <Widget>[
-              Icon(
-                Icons.check_circle,
-                color: Colors.green,
-              ),
-              Icon(
-                Icons.cancel,
-                color: Colors.red,
-              ),
-            ],
+            children: scoreKeeper,
           ),
         ),
       ],
