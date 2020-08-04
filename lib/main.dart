@@ -7,7 +7,7 @@ class Quizzler extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.grey.shade900,
+        backgroundColor: Colors.grey.shade800,
         body: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.0),
@@ -51,12 +51,12 @@ class _QuizPageState extends State<QuizPage> {
           child: Padding(
             padding: EdgeInsets.all(15.0),
             child: FlatButton(
-              textColor: Colors.white,
-              color: Colors.green,
+              textColor: Colors.black,
+              color: Colors.lightGreen[500],
               child: Text(
                 'True',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontSize: 20.0,
                 ),
               ),
@@ -70,12 +70,12 @@ class _QuizPageState extends State<QuizPage> {
           child: Padding(
             padding: EdgeInsets.all(15.0),
             child: FlatButton(
-              color: Colors.red,
+              color: Colors.red[400],
               child: Text(
                 'False',
                 style: TextStyle(
                   fontSize: 20.0,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
               onPressed: () {
@@ -84,7 +84,21 @@ class _QuizPageState extends State<QuizPage> {
             ),
           ),
         ),
-        //TODO: Add a Row here as your score keeper
+        Padding(
+          padding: const EdgeInsets.only(top: 70.0),
+          child: Row(
+            children: <Widget>[
+              Icon(
+                Icons.check_circle,
+                color: Colors.green,
+              ),
+              Icon(
+                Icons.cancel,
+                color: Colors.red,
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }
