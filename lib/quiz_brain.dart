@@ -1,6 +1,8 @@
 import 'question.dart';
 
 class QuizBrain {
+  int _questionNo = 0;
+
   List<Question> _questions = [
     Question('You can lead a cow down stairs but not up stairs.', false),
     Question('Approximately one quarter of human bones are in the feet.', true),
@@ -33,19 +35,29 @@ class QuizBrain {
         true),
   ];
 
-  String getQuestionText(int questionNo) {
-    return _questions[questionNo].questionText;
+  String getQuestionText() {
+    if (_questionNo < _questions.length - 1) {
+      return _questions[_questionNo].questionText;
+    } else {
+      return 'The quiz has finished! \n Thanks for playing!';
+    }
   }
 
-  bool getQuestionAnswer(int questionNo) {
-    return _questions[questionNo].questionAnswer;
+  bool getQuestionAnswer() {
+    return _questions[_questionNo].questionAnswer;
   }
 
-  bool checkAnswer(int questionNo, bool userAnswer) {
-    if (getQuestionAnswer(questionNo) == userAnswer) {
+  bool checkAnswer(bool userAnswer) {
+    if (getQuestionAnswer() == userAnswer) {
       return true;
     } else {
       return false;
+    }
+  }
+
+  bool nextQuestion() {
+    if (_questionNo < _questions.length - 1) {
+      _questionNo++;
     }
   }
 }

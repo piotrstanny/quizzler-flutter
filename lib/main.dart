@@ -29,7 +29,6 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
-  int questionNo = 0;
   bool userAnswer;
   bool isCorrect;
 
@@ -63,7 +62,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quizBrain.getQuestionText(questionNo),
+                quizBrain.getQuestionText(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -90,9 +89,9 @@ class _QuizPageState extends State<QuizPage> {
                 //The user picked true.
                 setState(() {
                   userAnswer = true;
-                  isCorrect = quizBrain.checkAnswer(questionNo, userAnswer);
+                  isCorrect = quizBrain.checkAnswer(userAnswer);
                   addIcon(isCorrect);
-                  questionNo++;
+                  quizBrain.nextQuestion();
                 });
               },
             ),
@@ -115,9 +114,9 @@ class _QuizPageState extends State<QuizPage> {
                 setState(
                   () {
                     userAnswer = false;
-                    isCorrect = quizBrain.checkAnswer(questionNo, userAnswer);
+                    isCorrect = quizBrain.checkAnswer(userAnswer);
                     addIcon(isCorrect);
-                    questionNo++;
+                    quizBrain.nextQuestion();
                   },
                 );
               },
