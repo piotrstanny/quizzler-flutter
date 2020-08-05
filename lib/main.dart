@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quizzler/question.dart';
+import 'quiz_brain.dart';
+
+QuizBrain quizBrain = QuizBrain();
 
 void main() => runApp(Quizzler());
 
@@ -31,7 +33,7 @@ class _QuizPageState extends State<QuizPage> {
   bool userAnswer;
 
   void checkAnswer(bool userAnswer, int questionNo) {
-    if (questions[questionNo].questionAnswer == userAnswer) {
+    if (quizBrain.questions[questionNo].questionAnswer == userAnswer) {
       scoreKeeper.add(
         Icon(
           Icons.check_circle,
@@ -60,7 +62,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                questions[questionNo].questionText,
+                quizBrain.questions[questionNo].questionText,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
