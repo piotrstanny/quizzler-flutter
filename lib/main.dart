@@ -48,18 +48,6 @@ class _QuizPageState extends State<QuizPage> {
     }
   }
 
-  List<Question> questions = [
-    Question('You can lead a cow down stairs but not up stairs.', false),
-    Question('Approximately one quarter of human bones are in the feet.', true),
-    Question('A slug\'s blood is green.', true),
-    Question(
-        'Waterloo has the greatest number of tube platforms in London', true),
-    Question(
-        'The Great Wall of China is longer than the distance between London and Beijing',
-        true),
-    Question('Monaco is the smallest country in the world', false),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Column(
