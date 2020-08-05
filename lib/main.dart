@@ -31,9 +31,10 @@ class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
   int questionNo = 0;
   bool userAnswer;
+  bool isCorrect;
 
-  void checkAnswer(bool userAnswer, int questionNo) {
-    if (quizBrain.getQuestionAnswer(questionNo) == userAnswer) {
+  void addIcon(bool isCorrect) {
+    if (isCorrect) {
       scoreKeeper.add(
         Icon(
           Icons.check_circle,
@@ -89,7 +90,8 @@ class _QuizPageState extends State<QuizPage> {
                 //The user picked true.
                 setState(() {
                   userAnswer = true;
-                  checkAnswer(userAnswer, questionNo);
+                  isCorrect = quizBrain.checkAnswer(questionNo, userAnswer);
+                  addIcon(isCorrect);
                   questionNo++;
                 });
               },
@@ -113,7 +115,8 @@ class _QuizPageState extends State<QuizPage> {
                 setState(
                   () {
                     userAnswer = false;
-                    checkAnswer(userAnswer, questionNo);
+                    isCorrect = quizBrain.checkAnswer(questionNo, userAnswer);
+                    addIcon(isCorrect);
                     questionNo++;
                   },
                 );

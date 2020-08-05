@@ -40,4 +40,12 @@ class QuizBrain {
   bool getQuestionAnswer(int questionNo) {
     return _questions[questionNo].questionAnswer;
   }
+
+  bool checkAnswer(int questionNo, bool userAnswer) {
+    if (getQuestionAnswer(questionNo) == userAnswer) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
