@@ -33,7 +33,7 @@ class _QuizPageState extends State<QuizPage> {
   bool userAnswer;
 
   void checkAnswer(bool userAnswer, int questionNo) {
-    if (quizBrain.questions[questionNo].questionAnswer == userAnswer) {
+    if (quizBrain.getQuestionAnswer(questionNo) == userAnswer) {
       scoreKeeper.add(
         Icon(
           Icons.check_circle,
@@ -62,7 +62,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quizBrain.questions[questionNo].questionText,
+                quizBrain.getQuestionText(questionNo),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
