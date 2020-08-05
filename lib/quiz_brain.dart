@@ -55,7 +55,7 @@ class QuizBrain {
     }
   }
 
-  bool nextQuestion() {
+  void nextQuestion() {
     if (_questionNo < _questions.length - 1) {
       _questionNo++;
     }
