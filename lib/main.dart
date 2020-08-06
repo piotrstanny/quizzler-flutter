@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'quiz_brain.dart';
 
 QuizBrain quizBrain = QuizBrain();
@@ -50,6 +51,27 @@ class _QuizPageState extends State<QuizPage> {
     }
   }
 
+  void showAlert() {
+    Alert(
+      context: context,
+      type: AlertType.error,
+      title: "QUIZ FINISHED!",
+      desc: "thanks for playing!",
+      buttons: [
+        DialogButton(
+          child: Text(
+            "Reset",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          width: 120,
+        )
+      ],
+    ).show();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -89,10 +111,13 @@ class _QuizPageState extends State<QuizPage> {
                 //The user picked true.
                 setState(() {
                   if (!quizBrain.quizFinished) {
-                    userAnswer = true;
+                    userAnswer = false;
                     isCorrect = quizBrain.checkAnswer(userAnswer);
                     addIcon(isCorrect);
                     quizBrain.nextQuestion();
+                    if (quizBrain.quizFinished) {
+                      showAlert();
+                    }
                   }
                 });
               },
@@ -120,6 +145,9 @@ class _QuizPageState extends State<QuizPage> {
                       isCorrect = quizBrain.checkAnswer(userAnswer);
                       addIcon(isCorrect);
                       quizBrain.nextQuestion();
+                      if (quizBrain.quizFinished) {
+                        showAlert();
+                      }
                     }
                   },
                 );

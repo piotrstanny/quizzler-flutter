@@ -37,10 +37,9 @@ class QuizBrain {
   ];
 
   String getQuestionText() {
-    if (_questionNo < _questions.length - 1) {
+    if (!quizFinished) {
       return _questions[_questionNo].questionText;
     } else {
-      quizFinished = true;
       return 'The quiz has finished! \n Thanks for playing!';
     }
   }
@@ -60,6 +59,8 @@ class QuizBrain {
   void nextQuestion() {
     if (_questionNo < _questions.length - 1) {
       _questionNo++;
+    } else {
+      quizFinished = true;
     }
   }
 }
