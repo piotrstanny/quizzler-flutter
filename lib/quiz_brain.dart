@@ -2,6 +2,7 @@ import 'question.dart';
 
 class QuizBrain {
   int _questionNo = 0;
+  bool quizFinished = false;
 
   List<Question> _questions = [
     Question('You can lead a cow down stairs but not up stairs.', false),
@@ -39,6 +40,7 @@ class QuizBrain {
     if (_questionNo < _questions.length - 1) {
       return _questions[_questionNo].questionText;
     } else {
+      quizFinished = true;
       return 'The quiz has finished! \n Thanks for playing!';
     }
   }

@@ -88,10 +88,12 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 //The user picked true.
                 setState(() {
-                  userAnswer = true;
-                  isCorrect = quizBrain.checkAnswer(userAnswer);
-                  addIcon(isCorrect);
-                  quizBrain.nextQuestion();
+                  if (!quizBrain.quizFinished) {
+                    userAnswer = true;
+                    isCorrect = quizBrain.checkAnswer(userAnswer);
+                    addIcon(isCorrect);
+                    quizBrain.nextQuestion();
+                  }
                 });
               },
             ),
@@ -113,10 +115,12 @@ class _QuizPageState extends State<QuizPage> {
                 //The user picked false.
                 setState(
                   () {
-                    userAnswer = false;
-                    isCorrect = quizBrain.checkAnswer(userAnswer);
-                    addIcon(isCorrect);
-                    quizBrain.nextQuestion();
+                    if (!quizBrain.quizFinished) {
+                      userAnswer = false;
+                      isCorrect = quizBrain.checkAnswer(userAnswer);
+                      addIcon(isCorrect);
+                      quizBrain.nextQuestion();
+                    }
                   },
                 );
               },
