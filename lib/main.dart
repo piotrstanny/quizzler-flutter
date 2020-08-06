@@ -65,6 +65,10 @@ class _QuizPageState extends State<QuizPage> {
           ),
           onPressed: () {
             Navigator.pop(context);
+            setState(() {
+              quizBrain.resetQuiz();
+              scoreKeeper = [];
+            });
           },
           width: 120,
         )
@@ -111,7 +115,7 @@ class _QuizPageState extends State<QuizPage> {
                 //The user picked true.
                 setState(() {
                   if (!quizBrain.quizFinished) {
-                    userAnswer = false;
+                    userAnswer = true;
                     isCorrect = quizBrain.checkAnswer(userAnswer);
                     addIcon(isCorrect);
                     quizBrain.nextQuestion();

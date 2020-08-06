@@ -63,4 +63,9 @@ class QuizBrain {
       quizFinished = true;
     }
   }
+
+  void resetQuiz() {
+    _questionNo = 0;
+    quizFinished = false;
+  }
 }
